@@ -11,18 +11,18 @@ import static com.sunnylow.todo.utils.Constant.APP_ROOT;
 
 public interface UserApi {
 
-	@PostMapping(value = APP_ROOT + "/users/create")
+	@PostMapping(value = APP_ROOT + "/users")
 	ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto);
 
 	@PatchMapping(value = APP_ROOT + "/users/{id}")
-	ResponseEntity<UserDto> updateUser(Long id, @RequestBody UserDto userDto);
+	ResponseEntity<UserDto> updateUser(@PathVariable("id") Long id, @RequestBody UserDto userDto);
 
-	@GetMapping(value = APP_ROOT + "/users/all")
+	@GetMapping(value = APP_ROOT + "/users")
 	ResponseEntity<List<UserDto>> getAllUsers();
 
 	@GetMapping(value = APP_ROOT + "/users/{id}")
-	ResponseEntity<UserDto> getUser(Long id);
+	ResponseEntity<UserDto> getUser(@PathVariable("id") Long id);
 
-	@DeleteMapping(value = APP_ROOT + "/users/delete/{id}")
-	ResponseEntity deleteUser(Long id);
+	@DeleteMapping(value = APP_ROOT + "/users/{id}")
+	ResponseEntity deleteUser(@PathVariable("id") Long id);
 }

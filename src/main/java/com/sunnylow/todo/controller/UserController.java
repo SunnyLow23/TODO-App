@@ -23,17 +23,17 @@ public class UserController implements UserApi {
 
 	@Override
 	public ResponseEntity<UserDto> updateUser(Long id, UserDto userDto) {
-		return new ResponseEntity<>(userService.save(userDto), HttpStatus.CREATED);
+		return new ResponseEntity<>(userService.update(id, userDto), HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<List<UserDto>> getAllUsers() {
-		return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<UserDto> getUser(Long id) {
-		return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+		return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
 	}
 
 	@Override
