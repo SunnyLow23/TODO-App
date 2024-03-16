@@ -37,7 +37,7 @@ public class CategoryController implements CategoryApi {
 	}
 
 	@Override
-	public ResponseEntity<List<CategoryDto>> getAllCategoriesByUserId(Long userId) {
+	public ResponseEntity<List<CategoryDto>> getAllByUserId(Long userId) {
 		return new ResponseEntity<>(categoryService.getAllByUserId(userId), HttpStatus.OK);
 	}
 

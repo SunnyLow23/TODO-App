@@ -17,10 +17,10 @@ public class CategoryValidator {
 			return errors;
 		}
 
-		if (categoryDto.getName().isEmpty()) {
+		if (categoryDto.getName().isBlank()) {
 			errors.add("Please fill the Name");
 		}
-		if (categoryDto.getDescription().isEmpty()) {
+		if (categoryDto.getDescription().isBlank()) {
 			errors.add("Please fill the Description");
 		}
 

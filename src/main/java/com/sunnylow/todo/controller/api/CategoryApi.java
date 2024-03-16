@@ -10,8 +10,8 @@ import static com.sunnylow.todo.utils.Constant.APP_ROOT;
 
 public interface CategoryApi {
 
-	@PostMapping(value = APP_ROOT + "/categories/users/{id}")
-	ResponseEntity<CategoryDto> createCategory(@PathVariable("id") Long id, @RequestBody CategoryDto categoryDto);
+	@PostMapping(value = APP_ROOT + "/categories/{id}")
+	ResponseEntity<CategoryDto> createCategory(@PathVariable("id") Long userId, @RequestBody CategoryDto categoryDto);
 
 	@PatchMapping(value = APP_ROOT + "/categories/{id}")
 	ResponseEntity<CategoryDto> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDto categoryDto);
@@ -23,7 +23,7 @@ public interface CategoryApi {
 	ResponseEntity<CategoryDto> getCategory(@PathVariable("id") Long id);
 
 	@GetMapping(value = APP_ROOT + "/categories/users/{id}")
-	ResponseEntity<List<CategoryDto>> getAllCategoriesByUserId(@PathVariable("id") Long userId);
+	ResponseEntity<List<CategoryDto>> getAllByUserId(@PathVariable("id") Long userId);
 
 	@DeleteMapping(value = APP_ROOT + "/categories/{id}")
 	ResponseEntity deleteCategory(@PathVariable("id") Long id);

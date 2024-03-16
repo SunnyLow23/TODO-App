@@ -20,19 +20,19 @@ public class UserValidator {
 			return errors;
 		}
 
-		if (userDto.getFirstName().isEmpty()) {
+		if (userDto.getFirstName().isBlank()) {
 			errors.add("Please fill the First Name");
 		}
-		if (userDto.getLastName().isEmpty()) {
+		if (userDto.getLastName().isBlank()) {
 			errors.add("Please fill the Last Name");
 		}
-		if (userDto.getEmail().isEmpty()) {
+		if (userDto.getEmail().isBlank()) {
 			errors.add("Please fill the User Email");
 		}
-		if (userDto.getUserName().isEmpty()) {
+		if (userDto.getUserName().isBlank()) {
 			errors.add("Please fill the User Name");
 		}
-		if (userDto.getPassword().isEmpty()) {
+		if (userDto.getPassword().isBlank()) {
 			errors.add("Please fill the Password");
 		}
 

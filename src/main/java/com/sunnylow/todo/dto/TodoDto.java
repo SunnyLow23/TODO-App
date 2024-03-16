@@ -1,5 +1,6 @@
 package com.sunnylow.todo.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sunnylow.todo.model.Todo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class TodoDto {
 	private ZonedDateTime startTime;
 	private boolean done;
 	private boolean favorite;
-	private CategoryDto categoryDto;
+	private Long categoryId;
 
 	public static Todo mapToEntity(TodoDto todoDto) {
 		final Todo todo = new Todo();
@@ -31,7 +32,6 @@ public class TodoDto {
 		todo.setStartTime(todoDto.getStartTime());
 		todo.setDone(todoDto.isDone());
 		todo.setFavorite(todoDto.isFavorite());
-		todo.setCategory(CategoryDto.mapToEntity(todoDto.getCategoryDto()));
 
 		return todo;
 	}
@@ -44,6 +44,7 @@ public class TodoDto {
 				.startTime(todo.getStartTime())
 				.done(todo.isDone())
 				.favorite(todo.isFavorite())
+				.categoryId(todo.getCategory().getId())
 				.build();
 	}
 }
