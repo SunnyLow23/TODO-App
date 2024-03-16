@@ -23,7 +23,7 @@ public class UserDto {
 	private String userName;
 	private String password;
 
-	@JsonIgnore
+//	@JsonIgnore
 	private List<CategoryDto> categoryDtos;
 
 	public static User mapToEntity(UserDto userDto) {

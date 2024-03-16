@@ -18,7 +18,7 @@ public class CategoryDto {
 	private Long id;
 	private String name;
 	private String description;
-	private UserDto userDto;
+	private Long userId;
 	private List<TodoDto> todoDtos;
 
 	public static Category mapToEntity(CategoryDto categoryDto) {
@@ -27,7 +27,6 @@ public class CategoryDto {
 		category.setId(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
-		category.setUser(UserDto.mapToEntity(categoryDto.getUserDto()));
 
 		return category;
 	}
@@ -37,6 +36,7 @@ public class CategoryDto {
 				.id(category.getId())
 				.name(category.getName())
 				.description(category.getDescription())
+				.userId(category.getUser().getId())
 				.todoDtos(
 						category.getTodos() != null ? category.getTodos()
 								.stream().map(TodoDto::mapToDto).collect(Collectors.toList()) : null

@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TodoApp" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.sunnylow.todo.TodoApplication" />
+    <module name="todo" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/java/com/sunnylow/todo" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
