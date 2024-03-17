@@ -1,6 +1,9 @@
 package com.sunnylow.todo.service.impl;
 
 import com.sunnylow.todo.dto.CategoryDto;
+import com.sunnylow.todo.exception.EntityNotFoundException;
+import com.sunnylow.todo.exception.ErrorCodes;
+import com.sunnylow.todo.exception.InvalidEntityException;
 import com.sunnylow.todo.model.Category;
 import com.sunnylow.todo.model.User;
 import com.sunnylow.todo.repository.CategoryRepository;
@@ -30,11 +33,11 @@ public class CategoryServiceImpl implements CategoryService {
 		List<String> errors = CategoryValidator.validateCategory(categoryDto);
 		if (!errors.isEmpty())  {
 			log.error("Category is not valid {}", categoryDto);
-			return null;
+			throw new InvalidEntityException("Category is not valid", ErrorCodes.CATEGORY_NOT_VALID, errors);
 		}
 
 		User user = userRepository.findById(userId)
-				.orElseThrow();
+				.orElseThrow(() -> new EntityNotFoundException("No Sser found with ID = " + userId, ErrorCodes.USER_NOT_FOUND));
 
 		Category category = CategoryDto.mapToEntity(categoryDto);
 		category.setUser(user);
@@ -47,11 +50,11 @@ public class CategoryServiceImpl implements CategoryService {
 		List<String> errors = CategoryValidator.validateCategory(categoryDto);
 		if (!errors.isEmpty())  {
 			log.error("Category is not valid {}", categoryDto);
-			return null;
+			throw new InvalidEntityException("Category is not valid", ErrorCodes.CATEGORY_NOT_VALID, errors);
 		}
 
 		Category category = categoryRepository.findById(id)
-				.orElseThrow();
+				.orElseThrow(() -> new EntityNotFoundException("No Category found with ID = " + id, ErrorCodes.CATEGORY_NOT_FOUND));
 
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
@@ -73,7 +76,7 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 
 		return categoryRepository.findById(id).map(CategoryDto::mapToDto)
-				.orElseThrow();
+				.orElseThrow(() -> new EntityNotFoundException("No Category found with ID = " + id, ErrorCodes.CATEGORY_NOT_FOUND));
 	}
 
 	@Override
