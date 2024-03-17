@@ -76,4 +76,16 @@ public class UserServiceImpl implements UserService {
 
 		userRepository.deleteById(id);
 	}
+
+	@Override
+	public UserDto login(UserDto userDto) {
+		List<String> errors = UserValidator.validateUserCredentials(userDto.getEmail(), userDto.getPassword());
+		if (!errors.isEmpty()) {
+			return null;
+		}
+
+		return userRepository.findUserByEmailAndPassword(userDto.getEmail(), userDto.getPassword())
+				.map(UserDto::mapToDto)
+				.orElseThrow();
+	}
 }

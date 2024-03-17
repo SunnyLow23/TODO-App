@@ -38,4 +38,17 @@ public class UserValidator {
 
 		return errors;
 	}
+
+	public static List<String> validateUserCredentials(String email, String password) {
+		List<String> errors = new ArrayList<>();
+
+		if (email.isBlank()) {
+			errors.add("Please fill the Email");
+		}
+		if (password.isBlank()) {
+			errors.add("Please fill the Password");
+		}
+
+		return errors;
+	}
 }
