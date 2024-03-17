@@ -37,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 
 		User user = userRepository.findById(userId)
-				.orElseThrow(() -> new EntityNotFoundException("No Sser found with ID = " + userId, ErrorCodes.USER_NOT_FOUND));
+				.orElseThrow(() -> new EntityNotFoundException("No User found with ID = " + userId, ErrorCodes.USER_NOT_FOUND));
 
 		Category category = CategoryDto.mapToEntity(categoryDto);
 		category.setUser(user);
